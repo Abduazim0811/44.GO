@@ -12,10 +12,9 @@ import (
 )
 
 func TestingUserId(t *testing.T) {
-	var users []handler.GetUserID.Users
 	router := SetupRouter()
 
-	users = append(users, models.User{Id: 1, Name: "Jane Doe", Email: "jane.doe@example.com"})
+	handler.Users = append(handler.Users, models.User{Id: 1, Name: "Abduazim", Email: "abduazim@gmail.com"})
 
 	w := httptest.NewRecorder()
 	req, _ := http.NewRequest("GET", "/users/1", nil)
@@ -25,7 +24,7 @@ func TestingUserId(t *testing.T) {
 
 	var fetchedUser models.User
 	json.Unmarshal(w.Body.Bytes(), &fetchedUser)
-	assert.Equal(t, "Jane Doe", fetchedUser.Name)
-	assert.Equal(t, "jane.doe@example.com", fetchedUser.Email)
+	assert.Equal(t, "Abduazim", fetchedUser.Name)
+	assert.Equal(t, "abduazim@gmail.com", fetchedUser.Email)
 	assert.Equal(t, 1, fetchedUser.Id)
 }

@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"fmt"
 	"homework_44/internal/models"
 	"net/http"
 
@@ -15,6 +16,7 @@ func CreateUsers(c *gin.Context) {
 	)
 
 	if err := c.ShouldBindJSON(&user); err != nil {
+		fmt.Println(err)
 		c.JSON(http.StatusBadRequest, gin.H{"error": "Bad request"})
 		return
 	}

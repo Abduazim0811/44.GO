@@ -15,7 +15,7 @@ import (
 func setupRouter() *gin.Engine {
 	gin.SetMode(gin.TestMode)
 	router := gin.Default()
-	router.GET("/users", GetUsers)
+	router.GET("/users", GetUser)
 	router.GET("/users/:id", GetUserID)
 	router.POST("/users", CreateUser)
 	return router
